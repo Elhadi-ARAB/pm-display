@@ -1,0 +1,30 @@
+# Objectif PDR (col. OBJECTIF) -> Objectif URL Builder (col. C et Z).
+# Clés normalisées : minuscules, sans accents, « _ » remplacés par des espaces.
+# Les valeurs qui sont en fait des types d'achat (CPM Floor, GAG…) n'ont pas d'objectif : l'expert choisit.
+objectifs:
+  completion: Branding
+  reach: Branding
+  branding: Branding               # à valider
+  reach completion: Branding       # à valider
+  consideration: Branding          # à valider
+  trafic: Trafic                   # à valider
+  trafic qualifie: Trafic          # à valider
+  recrutement: Conversion          # à valider
+  performance: Conversion          # à valider
+  conversion: Conversion           # à valider
+
+# Message PDR (col. PRODUIT/INFO) -> code message (fin col. AD), pour les formats « une ligne par message »
+messages:
+  pomme_de_terre: PDT
+  huile: Huile-olive
+  raclette: raclette
+
+# Champs constants (à confirmer avec les experts)
+constantes:
+  plateforme_campagne: DV360          # col. A
+  audience: Data                      # col. R
+  geolocation: National               # col. S
+  format_size: 1x1                    # col. W, si le format n'en précise pas
+  tracking_type: Pixel+Click-Command  # col. X, par défaut (modifiable par format dans l'app)
+  complement: X                       # col. AA
+  utm_source: Display_A79             # col. AE

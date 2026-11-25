@@ -1,0 +1,40 @@
+# Régie telle qu'écrite dans le PM (col. régie) ou le PDR (col. PLATEFORME) -> valeurs URL Builder.
+# alias : comparés en début de mot, sans accents ni majuscules.
+# regie : valeur de la liste Régie (col. Y). null = absente de la liste Inputs A79 (à y ajouter).
+# code : code régie dans le nom de créa (col. AD).
+# plateforme_gag : col. Q si l'achat est en gré à gré (null = inconnue, l'expert choisit).
+# a_valider: true = proposition déduite des PM, pas encore confirmée par un expert.
+
+# ---- Validées (URL Builder MDC SDG V2) ----
+youtube:   {alias: [youtube], regie: Youtube, code: Youtube, plateforme_gag: null}
+spotify:   {alias: [spotify], regie: Spotify, code: Spotify, plateforme_gag: Spotify_FRA}
+m6:        {alias: [m6], regie: M6, code: M6, plateforme_gag: M6+}
+tf1:       {alias: [tf1], regie: TF1, code: TF1, plateforme_gag: DV360}   # GAG -> DV360 : vu sur TTF1 (in-content banner)
+france-tv: {alias: [france tv, france-tv, francetv, ftv], regie: France-TV, code: FTV, plateforme_gag: null}
+weborama:  {alias: [weborama], regie: Weborama, code: Weborama, plateforme_gag: weborama}
+
+# ---- Proposées (nouveaux PM, à valider) ----
+deezer:       {alias: [deezer], regie: Deezer, code: Deezer, plateforme_gag: null, a_valider: true}
+canal:        {alias: [canal], regie: Canal+, code: Canal, plateforme_gag: null, a_valider: true}
+netflix:      {alias: [netflix], regie: null, code: Netflix, plateforme_gag: null, a_valider: true}
+"366":        {alias: ["366"], regie: "366", code: "366", plateforme_gag: null, a_valider: true}
+qrate:        {alias: [qrate], regie: Qrate, code: Qrate, plateforme_gag: null, a_valider: true}
+teads:        {alias: [teads], regie: Teads, code: Teads, plateforme_gag: Teads_FRA, a_valider: true}
+dailymotion:  {alias: [dailymotion], regie: Dailymotion, code: Dailymotion, plateforme_gag: Dailymotion_FRA, a_valider: true}
+leboncoin:    {alias: [leboncoin, le bon coin], regie: LeBonCoin, code: LeBonCoin, plateforme_gag: null, a_valider: true}
+while:        {alias: [while], regie: While, code: While, plateforme_gag: null, a_valider: true}
+k-words:      {alias: [k-words, kwords], regie: K-words, code: Kwords, plateforme_gag: K-words, a_valider: true}
+mpp:          {alias: [mon petit prono, monpetitprono, mpp], regie: MonPetitProno, code: MPP, plateforme_gag: MPP, a_valider: true}
+open-auction: {alias: [open auction], regie: Open, code: OpenAuction, plateforme_gag: null, a_valider: true}
+collective:   {alias: [collective audience], regie: Collective Audience, code: Collective, plateforme_gag: null, a_valider: true}
+triplelift:   {alias: [triplelift], regie: Triplelift, code: Triplelift, plateforme_gag: null, a_valider: true}
+prisma:       {alias: [prisma], regie: Prisma, code: Prisma, plateforme_gag: null, a_valider: true}
+acast:        {alias: [acast], regie: Acast, code: Acast, plateforme_gag: null, a_valider: true}
+sncf:         {alias: [sncf], regie: SNCF, code: SNCF, plateforme_gag: SNCF, a_valider: true}
+le-figaro:    {alias: [le figaro, lefigaro], regie: LeFigaro, code: LeFigaro, plateforme_gag: null, a_valider: true}
+bonjour-ratp: {alias: [bonjourratp, bonjour ratp], regie: BonjourRATP, code: BonjourRATP, plateforme_gag: null, a_valider: true}
+seedtag:      {alias: [seedtag], regie: Seedtag, code: Seedtag, plateforme_gag: Seedtag_FR, a_valider: true}
+ogury:        {alias: [ogury], regie: Ogury, code: Ogury, plateforme_gag: Ogury, a_valider: true}
+rakuten:      {alias: [rakuten], regie: null, code: Rakuten, plateforme_gag: Rakuten_FR, a_valider: true}
+marie-claire: {alias: [marie claire, groupe marie claire, groupemarieclaire, gmc], regie: GroupeMarieClaire, code: GMC, plateforme_gag: null, a_valider: true}
+20min:        {alias: ["20 minutes", 20min], regie: 20min, code: 20min, plateforme_gag: null, a_valider: true}

@@ -1,0 +1,18 @@
+# Type de ciblage écrit dans le libellé du PM -> Targeting Type (col. T), appliqué mécaniquement.
+# Le PM fait foi : si le libellé contient l'un de ces mots, c'est lui qui décide du Targeting Type,
+# même si la table des audiences proposait autre chose.
+# Si plusieurs mots sont présents, celui qui apparaît EN PREMIER dans le libellé gagne.
+# Si aucun mot n'est présent, l'app prend le Targeting Type de la table des audiences.
+#
+# Seuls les mots qui désignent vraiment un type de ciblage sont ici. Constaté sur 6 URL Builders :
+#   « broad » -> 3rd - Broad (2/2) ; « 1st party » -> 1st-Party-Targeting (1/1) ;
+#   « intérêts » -> 3rd - Interets (2/3) ; « contextuel » -> 3rd - Contextuel (1/3).
+# Volontairement ABSENTS, car les experts ne s'en servent pas pour choisir :
+#   « 3rd party » (présent dans presque tous les libellés YouTube : 4 Targeting Types différents),
+#   « socio demo » (Socio demo Parents / Seniors -> 3rd - Audience prio dans 8 cas sur 9),
+#   « affinity », « custom intent », « RON ».
+# A VALIDER avec les experts média.
+- {mots_cles: [1st party, first party, 1st-party, first-party], targeting_type: 1st-Party-Targeting}
+- {mots_cles: [broad], targeting_type: 3rd - Broad}
+- {mots_cles: [interet, interets, centres d'interet], targeting_type: 3rd - Interets}
+- {mots_cles: [contextuel, contextual, semantique], targeting_type: 3rd - Contextuel}

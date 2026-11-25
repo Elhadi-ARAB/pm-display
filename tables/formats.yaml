@@ -1,0 +1,78 @@
+# Par régie : mots-clés du format PM -> Format Type (col. V) et code format (col. AD).
+# Champs optionnels :
+#   pdr : mots-clés du format côté PDR (col. FORMAT), pour retrouver les messages.
+#   ligne_par_message : true = une ligne par message du PDR (pré-coché ; l'expert peut changer).
+#   code : peut contenir {duree}, remplacé par la durée lue dans le PM (« 15 secondes » -> 15).
+#   absorbe : mots-clés « consommés » par ce format, pour ne pas créer un 2e format à tort.
+#   defaut : true = utilisé seulement si aucun autre format de la régie ne correspond.
+#   tailles : true = une ligne par taille trouvée dans le PM (300x250, 728x90…), en Format size.
+#   format_size, tracking_type : valeurs par défaut du format (sinon constantes de divers.yaml).
+#   a_valider : true = pas confirmé par un URL Builder, ou contredit d'une campagne à l'autre.
+# Commentaire « vu : » = URL Builders où la valeur a été constatée.
+
+youtube:
+  - {mots_cles: [vrc], absorbe: [non skippable, non-skippable, skippable], format_type: VRC-Non-Skip, code: VRC-nonskip, pdr: [vrc], a_valider: true}
+  - {mots_cles: [ctv], absorbe: [qr code, qr], format_type: QR-codes-experience, code: QRcode, pdr: [ctv]}          # vu : TTF1
+  # Conflit : Non-skippable (MDC SDG, BDP V5, Pâques, RDC V2) / In-Stream-Classic (TTF1, MDC V5, MDC V6)
+  - {mots_cles: [non skippable, non-skippable, non skip], format_type: Non-skippable, code: nonskip, pdr: [trueview, non skippable]}
+  - {mots_cles: [bumper], format_type: In-Stream-bumper, code: Bumper, pdr: [bumper]}                                # vu partout
+  - {mots_cles: [shorts], format_type: Shorts, code: Shorts, pdr: [shorts]}                                          # vu : MDC SDG, Pâques
+spotify:
+  - {mots_cles: [audio], absorbe: [companion], format_type: Stream-Audio, code: audio, pdr: [audio], ligne_par_message: true}   # vu partout
+  - {mots_cles: [hpto, homepage], format_type: HPTO, code: HPTO, pdr: [hpto]}                                         # vu : RDC V2
+  - {mots_cles: [in feed, infeed], format_type: In-feed, code: Infeed, pdr: [infeed]}                                 # vu : RDC V2
+  - {mots_cles: [bundle, takeover, video], format_type: In-Stream-Classic, code: Video, pdr: [video]}                  # vu : TTF1, MDC V5, MDC V6
+deezer:
+  - {mots_cles: [audio], absorbe: [companion], format_type: Stream-Audio, code: audio, pdr: [audio]}                  # vu : BDP V5
+m6:
+  - {mots_cles: [hack], absorbe: [video], format_type: Hack6, code: Hack6, pdr: [hack]}                               # vu : MDC SDG
+  - {mots_cles: [6break, swipe], format_type: Display-slider, code: Display, pdr: [6break]}                            # vu : RDC V2
+  - {mots_cles: [video], format_type: In-Stream-catch-up, code: "video-{duree}s", pdr: [video, preroll], defaut: true} # vu : BDP V5
+tf1:
+  # Conflit : Midroll (MDC SDG, BDPV2) / In-Stream-Classic (TTF1) / In-Stream-catch-up (Pâques)
+  - {mots_cles: [midroll], absorbe: [video], format_type: Midroll, code: "midroll-{duree}s", pdr: [midroll]}
+  # Conflit : Monopreroll (BDPV2) / Pre-Roll (TTF1)
+  - {mots_cles: [mono preroll, monopreroll, mono-preroll], absorbe: [video], format_type: Monopreroll, code: "monopreroll-{duree}s", pdr: [preroll], a_valider: true}
+  # Pâques : le Cover (GAG) n'a pas de ligne dans l'URL Builder
+  - {mots_cles: [cover], format_type: Cover, code: Cover, pdr: [cover], a_valider: true}
+  - {mots_cles: [banner], format_type: Incontent-banner, code: Incontent-banner, pdr: [banner, iab]}                  # vu : TTF1
+france-tv:
+  - {mots_cles: [skin, qr], absorbe: [video, enrichie, preroll], format_type: In-Stream-enrichi, code: "QRcode-{duree}s", pdr: [skin]}  # vu : MDC SDG
+  - {mots_cles: [video], format_type: In-Stream-catch-up, code: "video-{duree}s", pdr: [video, preroll], defaut: true} # vu : Pâques
+weborama:
+  - {mots_cles: [enrichie, video], absorbe: [video], format_type: In-Stream-enrichi, code: "Enrichie-{duree}s", pdr: [video]}  # vu : MDC SDG
+canal:
+  - {mots_cles: [video], format_type: In-Stream-Classic, code: "video-{duree}s", pdr: [video, preroll], defaut: true, a_valider: true}
+netflix:
+  - {mots_cles: [video], format_type: In-Stream-Classic, code: "video-{duree}s", pdr: [video], defaut: true, a_valider: true}
+"366":
+  - {mots_cles: [video], format_type: In-Stream-Classic, code: "video-{duree}s", pdr: [video, preroll], defaut: true, a_valider: true}
+qrate:
+  - {mots_cles: [video], format_type: In-Stream-Classic, code: "video-{duree}s", pdr: [video], defaut: true}          # vu : BDP V5
+marie-claire:
+  - {mots_cles: [video], format_type: In-Stream-Classic, code: "video-{duree}s", pdr: [video], defaut: true}          # vu : BDPV2
+acast:
+  - {mots_cles: [audio, podcast], format_type: Podcast-Audio, code: "audio-{duree}s", pdr: [audio]}                   # vu : BDPV2
+teads:
+  - {mots_cles: [custom, 3d, inread], absorbe: [video], format_type: Custom3D-CTV, code: Custom3D, pdr: [inread, video]}  # vu : Pâques
+dailymotion:
+  - {mots_cles: [advergame, interactive], absorbe: [video], format_type: In-Stream-enrichi, code: Advergame, pdr: [video]}  # vu : Pâques
+leboncoin:
+  - {mots_cles: [inread], absorbe: [video], format_type: Display-inread, code: Inread, pdr: [inread]}                  # vu : FAV
+  - {mots_cles: [instream], absorbe: [video], format_type: In-Stream-Classic, code: Instream, pdr: [instream]}         # vu : FAV
+  - {mots_cles: [native], format_type: Display-Native, code: native, pdr: [native], a_valider: true}
+while:
+  - {mots_cles: [instream], absorbe: [video], format_type: In-Stream-Classic, code: Instream, pdr: [instream]}         # vu : FAV
+  - {mots_cles: [display iab, iab], format_type: Display-IAB, code: Display, pdr: [iab]}                              # vu : FAV (en 1x1)
+  - {mots_cles: [native], format_type: Display-Native, code: Native, pdr: [native]}                                   # vu : FAV
+open-auction:
+  - {mots_cles: [video], absorbe: [instream], format_type: In-Stream-Classic, code: "Video-{duree}s", pdr: [video]}   # vu : MDC V6
+  - {mots_cles: [iab], format_type: Display-IAB, code: IAB, pdr: [iab], tailles: true, a_valider: true}
+  - {mots_cles: [native], format_type: Display-Native, code: native, pdr: [native], a_valider: true}
+k-words:
+  - {mots_cles: [display, mot-cle], format_type: Display, code: Display, pdr: [iab]}                                  # vu : FAV
+  - {mots_cles: [engage], format_type: Engage, code: Engage, pdr: [engage]}                                           # vu : FAV
+collective:
+  - {mots_cles: [interactif, interractif, display, statique], absorbe: [video], format_type: Display-Dynamic-Creative, code: Display, pdr: [display]}  # vu : RDC V2
+mpp:
+  - {mots_cles: [interstitiel], format_type: Display-interstitiel, code: interstitiel, pdr: [interstitiel], a_valider: true}

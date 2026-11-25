@@ -1,0 +1,94 @@
+# Libellé d'audience PM -> Targeting Type (col. T), Targeting details (col. U), code créa (fin col. AD).
+# mots_cles : un mot-clé correspond s'il apparaît en début de mot. Une sous-liste = tous les mots requis.
+# debut_par : le libellé doit commencer par l'un de ces textes.
+# sauf : l'entrée est ignorée si l'un de ces mots-clés est présent.
+# regie : réservé à une ou plusieurs régies (testé en premier).
+# par_regie : surcharge d'un champ pour une régie donnée.
+# a_valider: true = pas confirmé par un URL Builder, ou contredit d'une campagne à l'autre.
+# Commentaire « vu : » = URL Builders où la valeur a été constatée. L'ordre compte.
+
+# ==== 1. Propres à une régie ====
+- {regie: [spotify], mots_cles: ["25 - 54", "25-54"], targeting_type: 3rd - Broad, targeting_details: Socio-demo, code: 25-54ans}   # vu : MDC SDG, BDP V5
+# Conflit 55+ Spotify/Deezer : Socio-demo (MDC SDG) / Seniors (BDP V5, MDC V5)
+- {regie: [spotify], mots_cles: ["55+", "55 +"], targeting_type: 3rd - Broad, targeting_details: Socio-demo, code: 55ans}
+- {regie: [spotify, deezer], mots_cles: ["25-44", "25 - 44"], targeting_type: 3rd - Broad, targeting_details: Socio-demo, code: 25-44ans}   # vu : TTF1
+- {regie: [spotify, deezer], mots_cles: ["+45", "45+", "45 ans et"], targeting_type: 3rd - Broad, targeting_details: Socio-demo, code: 45ans}   # vu : TTF1
+- {regie: [spotify, deezer], mots_cles: ["25-49", "25 - 49"], targeting_type: 3rd - Broad, targeting_details: Socio-demo, code: 25-49ans, a_valider: true}
+- {regie: [spotify], mots_cles: [targeting 3p], targeting_type: 3rd - Audience prio, targeting_details: Familles/Seniors/Mots-clés/Promovores, code: Custom}   # vu : RDC V2
+- {regie: [deezer], mots_cles: ["25 - 54", "25-54"], targeting_type: 3rd - Broad, targeting_details: Socio-demo, code: 25-54ans}   # vu : BDP V5
+- {regie: [deezer], mots_cles: ["55+", "55 +"], targeting_type: 3rd - Broad, targeting_details: Seniors, code: 55ans}   # vu : BDP V5
+- {regie: [teads], mots_cles: [[famil, senior]], targeting_type: 3rd - Audience prio, targeting_details: Familles/Seniors/Mots-clés, code: FamillesSeniors}   # vu : Pâques
+- {regie: [teads], mots_cles: [promovore, promo], targeting_type: 3rd - Interets, targeting_details: Promovores, code: Promovores}   # vu : Pâques
+- {regie: [collective], mots_cles: [famil], targeting_type: 3rd - Audience prio, targeting_details: Mots-clés, code: Familles}   # vu : RDC V2
+- {regie: [collective], mots_cles: [contextuel, semantique], targeting_type: 3rd - Audience prio, targeting_details: Contextual, code: Semantique}   # vu : RDC V2
+- {regie: [leboncoin], mots_cles: ["35-65", "35 - 65"], targeting_type: 3rd - Socio demo, targeting_details: 35-65ans, code: 35-65ans}   # vu : FAV
+- {regie: [leboncoin], mots_cles: [promo], targeting_type: 3rd - Audience prio, targeting_details: Promovores, code: Promovores}   # vu : FAV
+- {regie: [leboncoin], mots_cles: [epicurien], targeting_type: 3rd - Socio demo, targeting_details: Epicuriens, code: Epicuriens}   # vu : FAV
+- {regie: [leboncoin], mots_cles: [vin], targeting_type: 3rd - Socio demo, targeting_details: Amateurs-vins, code: Amateurs-vins}   # vu : FAV
+- {regie: [while], mots_cles: [gastronomie], targeting_type: 3rd - Contextuel, targeting_details: Gastronomie, code: Gastronomie}   # vu : FAV
+- {regie: [while], mots_cles: [bonnes affaires], targeting_type: 3rd - Contextuel, targeting_details: Bonnes-affaires, code: Bonnes-affaires}   # vu : FAV
+- {regie: [while], mots_cles: [vin], targeting_type: 3rd - Contextuel, targeting_details: Amateurs-vins, code: Amateurs-vins}   # vu : FAV
+- {regie: [while], mots_cles: ["50+"], targeting_type: 3rd - Contextuel, targeting_details: "50+", code: 50plus}   # vu : FAV
+- {regie: [while], mots_cles: [promo], targeting_type: 3rd - Contextuel, targeting_details: Promovores, code: Promovores}   # vu : FAV
+
+- {regie: [k-words], mots_cles: [ron, broad, cdd], targeting_type: 3rd - Contextuel, targeting_details: Broad, code: Broad}   # vu : FAV
+
+# ==== 2. Cas spécifiques, testés avant les cas généraux ====
+- {debut_par: [life event], targeting_type: 3rd - Audience prio, targeting_details: Life-event, code: Life-event}   # vu : BDPV2, Pâques, MDC V5
+- {debut_par: [detailed demo], targeting_type: 3rd - Audience prio, targeting_details: Socio-demo, code: Socio-demo}   # vu : RDC V2
+- {mots_cles: [[socio demo, "25-54"], [socio demo, "25 - 54"]], targeting_type: 3rd - Broad, targeting_details: Socio-demo, code: 25-54ans}   # vu : TTF1 (YouTube CTV)
+- {mots_cles: [[socio demo, "+55"]], sauf: [senior], targeting_type: 3rd - Broad, targeting_details: Socio-demo, code: 55ans}   # vu : TTF1 (YouTube CTV)
+- {mots_cles: [[affinity, famil], [affinity, family]], targeting_type: 3rd - Audience prio, targeting_details: Affinity-Familles, code: Affinity-Familles}   # vu : Pâques, RDC V2
+- {mots_cles: [[first party, famil], [1st party, famil]], targeting_type: 1st-Party-Targeting, targeting_details: 1stFamilles, code: 1stFamilles, a_valider: true}
+- {mots_cles: [[first party, "50"], [first party, senior], [1st party, senior]], targeting_type: 1st-Party-Targeting, targeting_details: Seniors, code: 1stSeniors, a_valider: true}
+- {mots_cles: [[first party, client], [1st party, client]], targeting_type: 1st-Party-Targeting, targeting_details: 1st - All Client (e-com + Mag), code: 1stAllClients}   # vu : TTF1
+# Conflit TT : 1st-Party-Targeting (BDPV2) / 3rd - Contextuel (Pâques)
+- {mots_cles: [retargeting, non-expose, non expose, rtg], targeting_type: 1st-Party-Targeting, targeting_details: RTG, code: RTG, a_valider: true}
+# Conflit TT : 3rd-Party-Targeting (TTF1, RDC V2) / 3rd - Contextuel (BDP V5)
+- {mots_cles: [custom intent, custom-intent, keywords], targeting_type: 3rd-Party-Targeting, targeting_details: Custom-intent, code: CustomIntent, a_valider: true}
+# Conflit TT : 3rd-Party-Targeting (RDC V2) / 3rd - Intentioniste (MDC V6)
+- {mots_cles: [in-market, in market], targeting_type: 3rd-Party-Targeting, targeting_details: In-Market, code: InMarket, a_valider: true}
+- {mots_cles: [lineup, chaines], targeting_type: 3rd - Contextuel, targeting_details: Contextual, code: Lineup, a_valider: true}
+- {mots_cles: [broad, ron, tous les utilisateurs], targeting_type: 3rd - Broad, targeting_details: Broad, code: Broad}   # vu : RDC V2
+
+# ==== 3. Cas généraux (MDC SDG, confirmés ailleurs sauf conflit indiqué) ====
+- mots_cles: [parent, famille, enfant, foyers avec enfant]                       # vu partout
+  targeting_type: 3rd - Audience prio
+  targeting_details: Familles
+  code: Familles
+# Conflit TT YouTube : 3rd - Contextuel (MDC SDG) / 3rd - Audience prio (BDP V5) / 3rd-Party-Targeting (TTF1, MDC V5) / 3rd - Interets (Pâques)
+- mots_cles: [value shopper, promophile, chasseurs de promo, bonnes affaires, promo]
+  targeting_type: 3rd-Party-Targeting
+  targeting_details: Promovores
+  code: Promovores
+  par_regie:
+    youtube: {targeting_type: 3rd - Contextuel}
+- mots_cles: [senior, "60+", "+55", retirement]                                  # vu partout
+  targeting_type: 3rd - Audience prio
+  targeting_details: Seniors
+  code: Seniors
+# Conflit : 3rd - Interets / Petit-conso-TV (MDC SDG) / 3rd - Interets / PetitconsoTV (Pâques) / 3rd-Party-Targeting / PetitconsoTV (TTF1)
+- mots_cles: [petit conso tv, light tv]
+  targeting_type: 3rd - Interets
+  targeting_details: Petit-conso-TV
+  code: PetitconsoTV
+- mots_cles: [aise, csp, hauts revenus, luxury]                                  # vu partout (code Aises sur BDP V5)
+  targeting_type: 3rd - Audience prio
+  targeting_details: Aisés / CSP+
+  code: CSPplus
+# TD Contextual constant ; TT varie : 3rd - Contextuel (MDC SDG) / 3rd-Party-Targeting (BDPV2, MDC V5) / 3rd - Interets (Pâques)
+- mots_cles: [food, gourmet, epicurien, cooking]
+  targeting_type: 3rd - Contextuel
+  targeting_details: Contextual
+  code: Food
+  par_regie:
+    youtube: {code: Contextuel-food}
+    m6: {code: Gourmets}
+    weborama: {code: Epicuriens}
+
+# ==== 4. Synonymes des cas généraux ====
+- {mots_cles: [family, foyer], targeting_type: 3rd - Audience prio, targeting_details: Familles, code: Familles, a_valider: true}
+- {mots_cles: [bon plan, discount, bargain], targeting_type: 3rd-Party-Targeting, targeting_details: Promovores, code: Promovores, par_regie: {youtube: {targeting_type: 3rd - Contextuel}}, a_valider: true}
+- {mots_cles: [silver, "50+", "+50", "+ de 50", "+60"], targeting_type: 3rd - Audience prio, targeting_details: Seniors, code: Seniors, a_valider: true}
+- {mots_cles: [recette, cuisine, gastronomie, vin, gourmand], targeting_type: 3rd - Interets, targeting_details: Contextual, code: Food, par_regie: {youtube: {code: Contextuel-food}, m6: {code: Gourmets}, weborama: {code: Epicuriens}}}   # vu : Pâques
+- {mots_cles: [contextuel, contextual, documentaire, semantique], targeting_type: 3rd - Contextuel, targeting_details: Contextual, code: Contextuel}   # vu : Pâques (FTV)
